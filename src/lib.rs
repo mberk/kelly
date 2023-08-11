@@ -195,7 +195,7 @@ fn calculate_log_expected_wealth(
 }
 
 #[pyfunction]
-#[pyo3(signature = (price, is_back, probability, other_probabilities, position, other_positions, bankroll, kelly_fraction, verbose = false))]
+#[pyo3(signature = (price, is_back, probability, other_probabilities, position, other_positions, bankroll, kelly_fraction = 1.0, verbose = false))]
 fn calculate_kelly_stake(
     price: f64,
     is_back: bool,
@@ -224,7 +224,7 @@ fn calculate_kelly_stake(
         bankroll,
         verbose,
     );
-    Ok(kelly_stake)
+    Ok(kelly_stake * kelly_fraction)
 }
 
 /// Fast Kelly staking calculations for a range of scenarios .
