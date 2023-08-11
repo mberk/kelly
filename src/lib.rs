@@ -226,7 +226,7 @@ fn calculate_kelly_stake(
     Ok(kelly_stake)
 }
 
-/// A Python module implemented in Rust.
+/// Fast Kelly staking calculations for a range of scenarios .
 #[pymodule]
 fn kelly(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(calculate_kelly_stake, m)?)?;
