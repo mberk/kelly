@@ -145,6 +145,8 @@ fn bounded_minimisation(
     x
 }
 
+// TODO: Fix these assertions to be based on approximate equality
+// TODO: Run tests as part of CI
 #[test]
 fn example1() {
     assert_eq!(
@@ -221,7 +223,7 @@ fn calculate_kelly_stake(
             )
         },
         0.0,
-        bankroll,
+        bankroll, // TODO: Fix upper bound; this should depend on current position and might even exceed the bankroll if green on all selections
         verbose,
     );
     Ok(kelly_stake * kelly_fraction)
