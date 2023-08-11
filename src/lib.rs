@@ -2,6 +2,7 @@ use pyo3::prelude::*;
 
 const HEADER: &str = " Func-count     x          f(x)          Procedure";
 
+// Ported from scipy.optimize._optimize._minimize_scalar_bounded: https://github.com/scipy/scipy/blob/d98afeae0fcb2302d0f25ba561e7984d5fadf65c/scipy/optimize/_optimize.py
 fn bounded_minimisation(
     func: impl Fn(f64) -> f64,
     lower_bound: f64,
