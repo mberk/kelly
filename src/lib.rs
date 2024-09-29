@@ -222,6 +222,11 @@ fn calculate_kelly_stake(
     kelly_fraction: f64,
     verbose: bool,
 ) -> PyResult<f64> {
+    let upper_bound = if is_back {
+        bankroll
+    } else {
+        bankroll / (price - 1.0)
+    };
     let kelly_stake = bounded_minimisation(
         |stake| {
             -calculate_log_expected_wealth(
@@ -236,7 +241,7 @@ fn calculate_kelly_stake(
             )
         },
         0.0,
-        bankroll, // TODO: Fix upper bound; this should depend on current position and might even exceed the bankroll if green on all selections
+        upper_bound, // TODO: Fix upper bound; this should depend on current position and might even exceed the bankroll if green on all selections
         verbose,
     );
     Ok(kelly_stake * kelly_fraction)
