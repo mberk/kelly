@@ -13,7 +13,7 @@ Scenarios to be covered in the near future include:
 
 ## Installation
 
-Requires Python 3.7 or above
+Requires Python 3.9 or above
 
 ```
 pip install git+https://github.com/mberk/kelly.git
